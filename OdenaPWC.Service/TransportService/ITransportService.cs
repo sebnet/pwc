@@ -10,6 +10,6 @@ namespace OdenaPWC.Service
     {
         Task<IEnumerable<ServiceAlert>> GetServiceAlertsAsync();
         Task<IEnumerable<ServiceAlert>> GetHistoricoAsync(string linea, DateTime? from, DateTime? to);
-        Task<string> NextTrainArrival(string line, string stop, string destination);
+        Task<string> Forecast(string line, string stop, string destination);
     }
 }

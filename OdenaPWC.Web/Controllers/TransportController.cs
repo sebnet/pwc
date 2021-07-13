@@ -25,6 +25,10 @@ namespace OdenaPWC.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Obtiene alertas de servicio de subte
+        /// </summary>
+        /// <returns>Coleccion de alertas</returns>
         [HttpGet("GetAlerts")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -43,6 +47,13 @@ namespace OdenaPWC.Controllers
 
             }
         }
+        /// <summary>
+        /// Devuelve histórico de alertas de servicio
+        /// </summary>
+        /// <param name="linea">la línea para la cual se solicita el histórico</param>
+        /// <param name="from">Fecha inicio</param>
+        /// <param name="to">Fecha fin</param>
+        /// <returns>Alerta de servicios</returns>
         [HttpGet("gethistorico/linea/{linea?}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -63,7 +74,13 @@ namespace OdenaPWC.Controllers
 
             }
         }
-
+        /// <summary>
+        /// Hora de arrivo del próximo tren
+        /// </summary>
+        /// <param name="line">línea para la cual se realiza la búsqueda</param>
+        /// <param name="stop">la estación para la cual se realiza la búsqueda</param>
+        /// <param name="destination">Dirección de destino</param>
+        /// <returns></returns>
         [HttpGet("forecast/line/{line}/stop/{stop}/destination/{destination}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -71,7 +88,7 @@ namespace OdenaPWC.Controllers
         {
             try
             {
-                var response = await _transportService.NextTrainArrival(line, stop, destination);
+                var response = await _transportService.Forecast(line, stop, destination);
                 return new OkObjectResult(response);
 
             }

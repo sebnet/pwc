@@ -52,7 +52,7 @@ namespace OdenaPWC.TransportApiProxy
             }
         }
 
-        public async Task<string> NextTrainArrival(string line, string stop, string destination)
+        public async Task<string> Forecast(string line, string stop, string destination)
         {
 
             stop = destination == "0" ? stop += "S" : stop += "N";
